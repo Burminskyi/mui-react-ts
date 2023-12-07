@@ -4,12 +4,15 @@ import {
   Badge,
   Box,
   InputBase,
+  Menu,
+  MenuItem,
   Toolbar,
   Typography,
   styled,
 } from "@mui/material";
 import { Mail, Notifications, Pets } from "@mui/icons-material";
 import logo from "../images/2023-07-17 19.33.36.jpg";
+import { useState } from "react";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -40,6 +43,15 @@ const UserBox = styled(Box)(({ theme }) => ({
 }));
 
 export const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -64,9 +76,12 @@ export const Navbar = () => {
             }}
             alt="Anton Burminskyi"
             src={logo}
+            // onClick={handleClick}
           />
         </Icons>
-        <UserBox>
+        <UserBox
+        // onClick={handleClick}
+        >
           <Avatar
             sx={{ width: "30px", height: "30px" }}
             alt="Anton Burminskyi"
@@ -75,6 +90,27 @@ export const Navbar = () => {
           <Typography>Anton</Typography>
         </UserBox>
       </StyledToolbar>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem onClick={handleClose}>Logout</MenuItem>
+      </Menu>
     </AppBar>
   );
 };
