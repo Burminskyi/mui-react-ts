@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   AppBar,
   Avatar,
@@ -11,8 +13,8 @@ import {
   styled,
 } from "@mui/material";
 import { Mail, Notifications, Pets } from "@mui/icons-material";
+
 import logo from "../images/2023-07-17 19.33.36.jpg";
-import { useState } from "react";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -25,6 +27,7 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   width: "40%",
 }));
+
 const Icons = styled(Box)(({ theme }) => ({
   display: "none",
   alignItems: "center",
@@ -33,6 +36,7 @@ const Icons = styled(Box)(({ theme }) => ({
     display: "flex",
   },
 }));
+
 const UserBox = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -48,7 +52,7 @@ export const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -76,12 +80,10 @@ export const Navbar = () => {
             }}
             alt="Anton Burminskyi"
             src={logo}
-            // onClick={handleClick}
+            onClick={handleClick}
           />
         </Icons>
-        <UserBox
-        // onClick={handleClick}
-        >
+        <UserBox onClick={handleClick}>
           <Avatar
             sx={{ width: "30px", height: "30px" }}
             alt="Anton Burminskyi"

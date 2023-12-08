@@ -36,11 +36,11 @@ const UserBox = styled(Box)({
 });
 
 export const Add = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   return (
     <>
       <Tooltip
-        onClick={(e) => setOpen(true)}
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => setOpen(true)}
         title="Add post"
         sx={{
           position: "fixed",
@@ -58,7 +58,14 @@ export const Add = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box width={400} height={300} bgcolor={"background.default"} color={"text.primary"} p={3} borderRadius={5}>
+        <Box
+          width={400}
+          height={300}
+          bgcolor={"background.default"}
+          color={"text.primary"}
+          p={3}
+          borderRadius={5}
+        >
           <Typography variant="h6" color="gray" textAlign="center">
             Create post
           </Typography>
@@ -68,9 +75,7 @@ export const Add = () => {
               alt="Anton Burminskyi"
               src={logo}
             />
-            <Typography fontWeight={500} variant="span">
-              Anton Burminskyi
-            </Typography>
+            <Typography fontWeight={500}>Anton Burminskyi</Typography>
           </UserBox>
           <TextField
             sx={{ width: "100%" }}

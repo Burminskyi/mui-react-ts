@@ -14,10 +14,11 @@ import {
 import React from "react";
 import logo from "../images/2023-07-17 19.33.36.jpg";
 
+
 export const Rightbar = () => {
   return (
     <Box flex={2} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
-      <Box position="fixed" width={300}>
+      <Box position="fixed" maxWidth={300} marginRight={1}>
         <Typography variant="h6" fontWeight={100}>
           Friends Online
         </Typography>

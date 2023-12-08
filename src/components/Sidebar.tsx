@@ -1,9 +1,9 @@
 import {
   AccountBox,
   Article,
+  Bedtime,
   Group,
   Home,
-  ModeNight,
   Person2,
   Settings,
   Storefront,
@@ -17,9 +17,17 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
-import React from "react";
 
-export const Sidebar = ({mode, setMode}) => {
+type SidebarProps = {
+  mode: "light" | "dark";
+  setMode: React.Dispatch<React.SetStateAction<"light" | "dark">>;
+};
+
+export const Sidebar: React.FC<SidebarProps> = ({ mode, setMode }) => {
+  const handleModeChange = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
+
   return (
     <Box flex={1} p={2} sx={{ display: { xs: "none", sm: "block" } }}>
       <Box position="fixed">
@@ -83,9 +91,9 @@ export const Sidebar = ({mode, setMode}) => {
           <ListItem disablePadding>
             <ListItemButton component="button">
               <ListItemIcon>
-                <ModeNight />
+                <Bedtime />
               </ListItemIcon>
-              <Switch onChange={e=>setMode(mode === "light" ? "dark" : "light")}/>
+              <Switch onChange={handleModeChange} />
             </ListItemButton>
           </ListItem>
         </List>

@@ -1,4 +1,3 @@
-import React from "react";
 import { Favorite, FavoriteBorder, MoreVert, Share } from "@mui/icons-material";
 import {
   Avatar,
